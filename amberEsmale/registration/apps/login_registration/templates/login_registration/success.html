@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login_registration/css/style.css' %}" media="screen" title="no title">
+  </head>
+  <body>
+    <div class='container'>
+    {% if 'first_name' in request.session %}
+      <h1>Welcome, {{request.session.first_name}}, thanks for {{ method }}!</h1>
+    {% endif %}
+    <h1>All Users</h1>
+    {% for user in all_users %}
+    <ul>
+      <li>{{user.first_name}} {{user.last_name}}</li>
+    </ul>
+    {% endfor %}
+
+  <a href="/"><button type="button" name="back">Go Back</button></a>
+</div>
+  </body>
+</html>

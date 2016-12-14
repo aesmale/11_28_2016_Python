@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'course/css/style.css' %}" media="screen" title="no title">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+    <form class="" action="/enroll" method="post">
+      {% csrf_token %}
+      <select class="" name="user">
+        {% for user in all_users %}
+          <option value="{{user.id}}">{{user.first_name}} {{user.last_name}}</option>
+        {% endfor %}
+      </select>
+      <select class="" name="course">
+        {% for course in all_courses %}
+          <option value="{{course.id}}">{{course.name}}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" name="name" value="Add User to Course">
+    </form>
+    <table>
+      <thead>
+        <th>
+          Course
+        </th>
+        <th>
+          Title
+        </th>
+        <th>
+          Number of Users
+        </th>
+      </thead>
+      {% for course in all_courses %}
+          <tr>
+            <td>
+              {{course.name}}
+            </td>
+            <td>
+              {{course.id}}
+            </td>
+            <td>
+              {{course.users.count}}
+            </td>
+          </tr>
+        {% endfor %}
+
+    </table>
+    <p>
+      <a href="/"><button type="button" name="button">Go Back</button></a>
+    </p>
+  </div>
+  </body>
+</html>

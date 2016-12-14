@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {% if 'first_name' in request.session %}
+      <h1>Welcome, {{request.session.first_name}}!</h1>
+    {% endif %}
+
+  <a href="/"><button type="button" name="back">Go Back</button></a>
+  </body>
+</html>
