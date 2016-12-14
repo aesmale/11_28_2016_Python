@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'restful/css/style.css' %}" media="screen" title="no title">
+    <title>Our Products</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Products</h1>
+      <table>
+        <thead>
+          <th>
+            <h3>Name</h3>
+          </th>
+          <th>
+            <h3>Description</h3>
+          </th>
+          <th>
+            <h3>Price</h3>
+          </th>
+          <th>
+            <h3>Actions</h3>
+          </th>
+        </thead>
+          {% for product in all_products %}
+            <tr>
+              <td>
+                {{product.name}}
+              </td>
+              <td>
+                {{product.description}}
+              </td>
+              <td>
+                ${{product.price}}
+              </td>
+              <td>
+                <a href="/products/show/{{product.id}}">Show</a> | <a href="/products/edit/{{product.id}}">Edit</a> | <a href="/products/{{product.id}}/destroy"><button type="button" name="button">Remove</button></a>
+              </td>
+            </tr>
+          {% endfor %}
+      </table>
+      <a href="/products/new">add a new product</a>
+
+    </div>
+  </body>
+</html>
